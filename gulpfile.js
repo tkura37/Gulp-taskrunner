@@ -8,6 +8,7 @@ const plumber = require("gulp-plumber");
 const browserSync = require("browser-sync");
 const sourcemaps = require("gulp-sourcemaps");
 const rename = require("gulp-rename");
+const { deleteAsync } = require("del");
 
 const srcPath = {
   html: "src/*.html",
@@ -20,6 +21,11 @@ const distPath = {
   css: "dist/css/",
   js: "dist/js/",
 };
+
+/* distの中身を削除 */
+function clean() {
+  return deleteAsync(["dist/**", "!dist"]);
+}
 
 /* .htmlをコピー */
 function copyHtml() {
@@ -81,5 +87,8 @@ function serve(done) {
   done();
 }
 
-exports.build = gulp.parallel(copyHtml, processScss, minifyJS);
+exports.build = gulp.series(
+  clean,
+  gulp.parallel(copyHtml, processScss, minifyJS)
+);
 exports.default = gulp.series(exports.build, gulp.parallel(serve, watch));

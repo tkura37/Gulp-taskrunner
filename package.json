@@ -13,6 +13,7 @@
     "autoprefixer": "^10.4.21",
     "browser-sync": "^3.0.4",
     "cssnano": "^7.0.6",
+    "del": "^8.0.0",
     "gulp": "^5.0.0",
     "gulp-plumber": "^1.2.1",
     "gulp-postcss": "^10.0.0",

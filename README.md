@@ -2,7 +2,8 @@
 Gulpで構築したフロントエンドタスクランナー
 
 ## 機能
-各種ファイル保存時に、以下を自動実行
+1. distディレクトリをclean後、各種ファイルの初回buildを実施
+2. 各種ファイル保存時に以下を自動実行し、ブラウザをホットリロード
 - .html
   - dist/にそのままコピー
   - minifyは非対応(既存パッケージに脆弱性があるため)
@@ -13,7 +14,6 @@ Gulpで構築したフロントエンドタスクランナー
 - .js
   - minify
   - dist/js/に出力
-- ブラウザのリロード
 
 ## ディレクトリ構成
 ```text
@@ -43,5 +43,5 @@ Gulp-taskrunner/
 
 ## パッケージ導入(npm)
 ```bash
-npm install --save-dev gulp gulp-sass sass gulp-plumber gulp-rename gulp-postcss autoprefixer cssnano gulp-sourcemaps gulp-uglify browser-sync
+npm install --save-dev gulp gulp-sass sass gulp-plumber gulp-rename gulp-postcss autoprefixer cssnano gulp-sourcemaps gulp-uglify browser-sync del
 ```
